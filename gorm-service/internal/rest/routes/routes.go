@@ -25,9 +25,16 @@ type Routes []Route
 var routes = Routes{
 	Route{
 		"Health",
-		"GET",
-		"/health",
+		"POST",
+		"/user",
 		APIVersionV1,
-		rest.Health,
+		rest.AddUser,
+	},
+	Route{
+		"Health",
+		"GET",
+		"/user",
+		APIVersionV1,
+		rest.GetUser,
 	},
 }
