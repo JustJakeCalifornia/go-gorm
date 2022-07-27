@@ -13,7 +13,9 @@ type UserRepository interface {
 func AddUser() error {
 	user := entity.User{Name: "Max"}
 
-	result := GetInstance().DB.Create(&user)
+	conn := getDatabase()
+	dbInstance := Database{db: conn}
+	result := dbInstance.db.Create(&user)
 	if result.Error != nil {
 		return result.Error
 	}
@@ -23,7 +25,9 @@ func AddUser() error {
 func GetUser() (entity.User, error) {
 	var user entity.User
 
-	result := GetInstance().DB.First(&user)
+	conn := getDatabase()
+	dbInstance := Database{db: conn}
+	result := dbInstance.db.First(&user)
 	if result.Error != nil {
 		return entity.User{}, result.Error
 	}

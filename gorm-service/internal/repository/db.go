@@ -13,6 +13,12 @@ import (
 	"gorm.io/gorm"
 )
 
+type Database struct {
+	db *gorm.DB
+}
+
+// other way: https://discord.com/channels/118456055842734083/118456055842734083/1001897017200615424
+
 func getDatabase() *gorm.DB {
 	dsn := os.Getenv("DSN")
 	counts := 0
